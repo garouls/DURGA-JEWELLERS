@@ -1,16 +1,21 @@
-# React + Vite
+# Shree Shublaxmi Jewellers - Bilaspur Showroom Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the premium, heritage-styled web application for **Shree Shublaxmi Jewellers**, located in Marwadi Line, Sadar Bazar, Bilaspur. 
 
-Currently, two official plugins are available:
+The site is built with React 19 + Vite JS, Vanilla CSS, and has been fully configured for immediate, robust deployment on Vercel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Heritage Aesthetics**: Custom designed using light ivory-cream palettes, royal velvet-burgundy undertones, and gold dashed frames.
+* **Shop By Category (Marquee)**: Infinite left-to-right scrolling category showcase featuring Bangles & Kadas, Earrings, Mangalsutras, and Statement Rings.
+* **Shop By Collection (Static Grid)**: Organized vertical layout allowing users to view and filter our BIS-Hallmarked collections.
+* **Our Models (Marquee)**: Seamless, auto-scrolling infinite gallery of our high-jewelry collection models.
+* **Vercel Deployable**: Clean route redirections and instant framework preset auto-detection.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Deploying to Vercel
+
+Simply link this GitHub repository to your Vercel Dashboard, and click **Deploy**!
