@@ -1000,7 +1000,7 @@ body {
 
 .categories-marquee-row {
   display: flex;
-  gap: 32px;
+  gap: 0;
   width: max-content;
   animation: categoryMarqueeLeft 25s linear infinite;
   padding: 16px 10px;
@@ -1012,11 +1012,13 @@ body {
 
 .categories-marquee-row .category-card {
   flex: 0 0 260px;
+  margin-right: 32px;
 }
 
 @media (max-width: 480px) {
   .categories-marquee-row .category-card {
     flex: 0 0 180px;
+    margin-right: 20px;
   }
 }
 
@@ -1384,7 +1386,7 @@ body {
 
 .models-marquee-row {
   display: flex;
-  gap: 16px;
+  gap: 0;
   width: max-content;
   animation: marqueeLeft 30s linear infinite;
   padding: 10px 0;
@@ -1396,6 +1398,7 @@ body {
 
 .model-marquee-card {
   flex: 0 0 320px;
+  margin-right: 16px;
   aspect-ratio: 2 / 3;
   overflow: hidden;
   border: 1px solid rgba(184, 146, 58, 0.1);
@@ -1406,6 +1409,7 @@ body {
 @media (max-width: 768px) {
   .model-marquee-card {
     flex: 0 0 230px;
+    margin-right: 12px;
   }
 }
 
