@@ -306,6 +306,40 @@ body {
   z-index: 10;
 }
 
+/* Cinematic Slide-In Transitions */
+.carousel-slide .banner-badge-container,
+.carousel-slide .banner-main-title,
+.carousel-slide .hero-oval-arch-frame,
+.carousel-slide .banner-bottom-text {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-slide.active .banner-badge-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.carousel-slide.active .banner-main-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.carousel-slide.active .hero-oval-arch-frame {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+.carousel-slide.active .banner-bottom-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
 .carousel-overlay {
   position: relative;
   z-index: 5;
@@ -395,6 +429,12 @@ body {
   text-transform: uppercase;
 }
 
+@keyframes archGlow {
+  0% { box-shadow: 0 15px 40px rgba(42, 37, 32, 0.08), 0 0 0 0px rgba(184, 146, 58, 0.2); }
+  50% { box-shadow: 0 15px 40px rgba(42, 37, 32, 0.08), 0 0 25px 8px rgba(184, 146, 58, 0.45); }
+  100% { box-shadow: 0 15px 40px rgba(42, 37, 32, 0.08), 0 0 0 0px rgba(184, 146, 58, 0.2); }
+}
+
 /* Oval Arched Image Frame */
 .hero-oval-arch-frame {
   position: relative;
@@ -404,7 +444,7 @@ body {
   padding: 8px;
   background: var(--ivory-bg);
   border: 1.5px dashed var(--royal-gold);
-  box-shadow: var(--box-shadow-luxury);
+  animation: archGlow 6s ease-in-out infinite;
   margin-bottom: 32px;
   transition: var(--transition-smooth);
 }
@@ -417,8 +457,9 @@ body {
 }
 
 .hero-oval-arch-frame:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
   border-color: var(--burgundy);
+  animation-play-state: paused; /* Pauses glow expansion on manual hover */
 }
 
 .hero-arch-inner-image {
@@ -608,22 +649,25 @@ body {
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid #c5c2ba;
+  background: rgba(253, 251, 247, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--royal-gold-border);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: var(--box-shadow-luxury);
   transition: var(--transition-smooth);
 }
 
 .carousel-nav-btn:hover {
   border-color: var(--royal-gold);
-  background: var(--ivory-bg);
-  transform: translateY(-50%) scale(1.05);
+  background: rgba(253, 251, 247, 0.95);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--box-shadow-gold);
 }
 
 .carousel-nav-btn.prev { left: calc(50% - 170px); }
