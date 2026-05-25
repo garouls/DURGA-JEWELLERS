@@ -247,6 +247,14 @@ export default function App() {
     setLikedProducts(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+    const showcaseElement = document.getElementById('showcase');
+    if (showcaseElement) {
+      showcaseElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Filter products based on selected tab
   const filteredProducts = activeCategory === 'ALL' 
     ? allProducts 
@@ -548,7 +556,7 @@ export default function App() {
               {[1, 2, 3, 4].map((multiplier) => (
                 <React.Fragment key={multiplier}>
                   {/* Category 1: BANGLES */}
-                  <div className="category-card" onClick={() => setActiveCategory('BANGLES')}>
+                  <div className="category-card" onClick={() => handleCategoryClick('BANGLES')}>
                     <div className="category-image-wrapper">
                       <img 
                         src={bangleImages[1].url} 
@@ -560,7 +568,7 @@ export default function App() {
                   </div>
 
                   {/* Category 2: EARRINGS */}
-                  <div className="category-card" onClick={() => setActiveCategory('EARRINGS')}>
+                  <div className="category-card" onClick={() => handleCategoryClick('EARRINGS')}>
                     <div className="category-image-wrapper">
                       <img 
                         src={earringImages[0].url} 
@@ -572,7 +580,7 @@ export default function App() {
                   </div>
 
                   {/* Category 3: MANGALSUTRA */}
-                  <div className="category-card" onClick={() => setActiveCategory('MANGALSUTRA')}>
+                  <div className="category-card" onClick={() => handleCategoryClick('MANGALSUTRA')}>
                     <div className="category-image-wrapper">
                       <img 
                         src={mangalsutraImages[0].url} 
@@ -584,7 +592,7 @@ export default function App() {
                   </div>
 
                   {/* Category 4: RINGS */}
-                  <div className="category-card" onClick={() => setActiveCategory('RINGS')}>
+                  <div className="category-card" onClick={() => handleCategoryClick('RINGS')}>
                     <div className="category-image-wrapper">
                       <img 
                         src={ringImages[0].url} 
