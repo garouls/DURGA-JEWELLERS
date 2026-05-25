@@ -266,7 +266,6 @@ body {
   margin-top: 8px;
 }
 
-/* 2. Hero Section - Arched & Sunburst Kiner Kailash Style */
 .hero-section {
   position: relative;
   width: 100%;
@@ -276,6 +275,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hero-section::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 /* Radial Sunburst Rays background */
