@@ -9,7 +9,7 @@ import {
 const bannerImages = [
   {
     url: '/assets/ZIPBANGLES/WhatsApp Image 2026-05-25 at 5.13.45 PM.jpeg',
-    pre: 'DJJPL',
+    pre: 'SSJ',
     presents: 'PRESENTS',
     line1: 'A',
     line2: 'Lifetime',
@@ -19,7 +19,7 @@ const bannerImages = [
   },
   {
     url: '/assets/ZIPMODELS/WhatsApp Image 2026-05-25 at 4.50.46 PM.jpeg',
-    pre: 'DJJPL',
+    pre: 'SSJ',
     presents: 'PRESENTS',
     line1: 'THE',
     line2: 'Bridal',
@@ -29,7 +29,7 @@ const bannerImages = [
   },
   {
     url: '/assets/ZIPRINGS/WhatsApp Image 2026-05-25 at 5.19.39 PM.jpeg',
-    pre: 'DJJPL',
+    pre: 'SSJ',
     presents: 'PRESENTS',
     line1: 'AN',
     line2: 'Eternal',
@@ -262,11 +262,11 @@ export default function App() {
           {/* Logo Brand Title */}
           <a href="#" className="nav-brand">
             <div className="brand-badge">
-              <span className="brand-badge-text">DJ</span>
+              <span className="brand-badge-text">SSJ</span>
             </div>
             <div className="brand-text-container">
-              <span className="brand-name">DURGA JEWELLERS</span>
-              <span className="brand-subtitle">Jammu</span>
+              <span className="brand-name">SHREE SHUBLAXMI JEWELLERS</span>
+              <span className="brand-subtitle">Bilaspur</span>
             </div>
           </a>
 
@@ -449,7 +449,7 @@ export default function App() {
                   </div>
                   <div className="polaroid-caption">
                     <span className="caption-main">THE ROYAL JADAU HARAM</span>
-                    <span className="caption-sub">Durga Jewellers Heritage</span>
+                    <span className="caption-sub">Shree Shublaxmi Jewellers Heritage</span>
                   </div>
                 </div>
               </div>
@@ -465,7 +465,7 @@ export default function App() {
                 </div>
                 <div className="polaroid-caption">
                   <span className="caption-main">ROYAL BRIDAL ESSENCE</span>
-                  <span className="caption-sub">Traditional Jammu Jhumkis</span>
+                  <span className="caption-sub">Traditional Heritage Jhumkis</span>
                 </div>
               </div>
             </div>
@@ -651,7 +651,7 @@ export default function App() {
                         <Heart className="icon-sm" />
                       </button>
                       <a 
-                        href={`https://wa.me/911912540000?text=Hello%20Durga%20Jewellers,%20I%20am%20interested%20in%20buying%20your%20${encodeURIComponent(product.title)}`}
+                        href={`https://wa.me/911912540000?text=Hello%20Shree%20Shublaxmi%20Jewellers,%20I%20am%20interested%20in%20buying%20your%20${encodeURIComponent(product.title)}`}
                         target="_blank"
                         rel="noreferrer"
                         className="whatsapp-inquire-btn"
@@ -686,10 +686,10 @@ export default function App() {
             <div className="custom-order-box">
               <span className="custom-order-title">CUSTOM ORDER ONLY</span>
               <p className="custom-order-desc">
-                We craft bespoke handcrafted pieces matching your specifications for {activeCategory}. Please contact our Jammu showroom on WhatsApp to design your dream piece.
+                We craft bespoke handcrafted pieces matching your specifications for {activeCategory}. Please contact our Bilaspur showroom on WhatsApp to design your dream piece.
               </p>
               <a 
-                href="https://wa.me/911912540000?text=Hello%20Durga%20Jewellers,%20I%20want%20to%20place%20a%20custom%20order." 
+                href="https://wa.me/911912540000?text=Hello%20Shree%20Shublaxmi%20Jewellers,%20I%20want%20to%20place%20a%20custom%20order." 
                 target="_blank"
                 rel="noreferrer"
                 className="custom-order-link"
@@ -738,9 +738,9 @@ export default function App() {
             {/* Showroom info & Details */}
             <div className="contact-info-block">
               <h2 className="section-pretitle">VISIT OUR SHOWROOM</h2>
-              <h3 className="showroom-title">Durga Jewellers</h3>
+              <h3 className="showroom-title">Shree Shublaxmi Jewellers</h3>
               <p className="showroom-desc">
-                Step into a world of pure heritage gold and flawless diamonds. Our flagship showroom in Jammu showcases one-of-a-kind bespoke bridal sets, beautiful light-weight items, and custom kada collections.
+                Step into a world of pure heritage gold and flawless diamonds. Our flagship showroom in Bilaspur showcases one-of-a-kind bespoke bridal sets, beautiful light-weight items, and custom kada collections.
               </p>
 
               <div className="info-cards-stack">
@@ -753,7 +753,7 @@ export default function App() {
                   <div className="info-card-text">
                     <h4 className="info-card-label">Our Showroom Address</h4>
                     <p className="info-card-value">
-                      Durga Jewellers, Jain Bazar, Jammu, Jammu and Kashmir - 180001
+                      Shree Shublaxmi Jewellers, Marwadi line sadar bazar, Bilaspur, Chhattisgarh - 495001
                     </p>
                   </div>
                 </div>
@@ -779,10 +779,10 @@ export default function App() {
                   </div>
                   <div className="info-card-text">
                     <h4 className="info-card-label">Phone & Inquiries</h4>
-                    <a href="tel:+911912540000" className="info-card-phone-link">
-                      +91 191 254 0000 (Jammu Main Line)
+                    <a href="tel:+917752254000" className="info-card-phone-link">
+                      +91 7752 254 000 (Bilaspur Main Line)
                     </a>
-                    <a href="https://wa.me/911912540000" className="whatsapp-link" target="_blank" rel="noreferrer">
+                    <a href="https://wa.me/917752254000" className="whatsapp-link" target="_blank" rel="noreferrer">
                       CONNECT ON WHATSAPP &rarr;
                     </a>
                   </div>
@@ -798,7 +798,7 @@ export default function App() {
                 Fill the form below to receive a personalized bridal collection catalog or schedule a virtual preview call.
               </p>
               
-              <form onSubmit={(e) => { e.preventDefault(); alert("Thank you! Our Jammu showroom representative will reach out to you shortly."); }} className="contact-form">
+              <form onSubmit={(e) => { e.preventDefault(); alert("Thank you! Our Bilaspur showroom representative will reach out to you shortly."); }} className="contact-form">
                 <div className="form-row">
                   <div className="form-group">
                     <label className="input-label">Your Full Name</label>
@@ -858,8 +858,8 @@ export default function App() {
       <footer className="footer-main">
         <div className="footer-inner">
           <div className="footer-brand">
-            <span className="footer-brand-title">DURGA JEWELLERS</span>
-            <span className="footer-brand-sub">JAIN BAZAR, JAMMU</span>
+            <span className="footer-brand-title">SHREE SHUBLAXMI JEWELLERS</span>
+            <span className="footer-brand-sub">MARWADI LINE, SADAR BAZAR, BILASPUR</span>
           </div>
 
           <div className="footer-links">
@@ -876,14 +876,14 @@ export default function App() {
               <svg className="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                <path d="M17.5 6.5h.01"/>
               </svg>
             </a>
           </div>
         </div>
         
         <div className="footer-copyright">
-          &copy; {new Date().getFullYear()} Durga Jewellers Jammu. All Rights Reserved. Pure BIS Hallmarked Gold & Certified Diamonds.
+          &copy; {new Date().getFullYear()} Shree Shublaxmi Jewellers Bilaspur. All Rights Reserved. Pure BIS Hallmarked Gold & Certified Diamonds.
         </div>
       </footer>
 
