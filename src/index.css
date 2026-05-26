@@ -92,7 +92,7 @@ body {
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 14px 24px;
+  padding: 8px 24px;
 }
 
 .nav-brand {
@@ -104,7 +104,7 @@ body {
 }
 
 .brand-logo-img {
-  height: 72px;
+  height: 90px;
   width: auto;
   object-fit: contain;
   transition: var(--transition-smooth);
