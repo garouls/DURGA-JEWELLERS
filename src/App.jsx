@@ -218,10 +218,20 @@ export default function App() {
   const [activeModelSlide, setActiveModelSlide] = useState(0);
   const [likedProducts, setLikedProducts] = useState({});
 
-  // Gold rates and live admin settings state
+  // Gold rates and live admin settings state with try-catch safety
   const [goldRates, setGoldRates] = useState(() => {
-    const saved = localStorage.getItem('djjpl_gold_rates');
-    return saved ? JSON.parse(saved) : {
+    try {
+      const saved = localStorage.getItem('djjpl_gold_rates');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.gold24k && parsed.gold22k && parsed.gold18k && parsed.silver) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error("Failed to parse gold rates from localStorage", e);
+    }
+    return {
       gold24k: '78,500',
       gold22k: '71,950',
       gold18k: '58,880',
