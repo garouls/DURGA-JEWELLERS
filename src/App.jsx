@@ -300,8 +300,49 @@ export default function App() {
       <div className="top-ticker-bar">
         <div className="ticker-content-wrapper">
           <div className="ticker-scroll">
-            <span>✨ Today's Live Rates: 24K Gold (10g): ₹{goldRates.gold24k} | 22K Gold (10g): ₹{goldRates.gold22k} | 18K Gold (10g): ₹{goldRates.gold18k} | Silver (1kg): ₹{goldRates.silver} | {goldRates.customMessage} ✨</span>
-            <span>✨ Today's Live Rates: 24K Gold (10g): ₹{goldRates.gold24k} | 22K Gold (10g): ₹{goldRates.gold22k} | 18K Gold (10g): ₹{goldRates.gold18k} | Silver (1kg): ₹{goldRates.silver} | {goldRates.customMessage} ✨</span>
+            
+            {/* First Set of Badges */}
+            <div className="ticker-rates-set">
+              <div className="ticker-rate-badge gold-24k">
+                <span className="badge-tag">24K GOLD</span>
+                <span className="badge-val">₹{goldRates.gold24k}</span>
+              </div>
+              <div className="ticker-rate-badge gold-22k">
+                <span className="badge-tag">22K GOLD</span>
+                <span className="badge-val">₹{goldRates.gold22k}</span>
+              </div>
+              <div className="ticker-rate-badge gold-18k">
+                <span className="badge-tag">18K GOLD</span>
+                <span className="badge-val">₹{goldRates.gold18k}</span>
+              </div>
+              <div className="ticker-rate-badge metal-silver">
+                <span className="badge-tag">SILVER 1KG</span>
+                <span className="badge-val">₹{goldRates.silver}</span>
+              </div>
+              <span className="ticker-custom-msg">✨ {goldRates.customMessage} ✨</span>
+            </div>
+
+            {/* Second Set of Badges for Infinite Loop */}
+            <div className="ticker-rates-set">
+              <div className="ticker-rate-badge gold-24k">
+                <span className="badge-tag">24K GOLD</span>
+                <span className="badge-val">₹{goldRates.gold24k}</span>
+              </div>
+              <div className="ticker-rate-badge gold-22k">
+                <span className="badge-tag">22K GOLD</span>
+                <span className="badge-val">₹{goldRates.gold22k}</span>
+              </div>
+              <div className="ticker-rate-badge gold-18k">
+                <span className="badge-tag">18K GOLD</span>
+                <span className="badge-val">₹{goldRates.gold18k}</span>
+              </div>
+              <div className="ticker-rate-badge metal-silver">
+                <span className="badge-tag">SILVER 1KG</span>
+                <span className="badge-val">₹{goldRates.silver}</span>
+              </div>
+              <span className="ticker-custom-msg">✨ {goldRates.customMessage} ✨</span>
+            </div>
+
           </div>
         </div>
         <button className="admin-access-trigger-btn" onClick={() => setIsAdminOpen(true)}>

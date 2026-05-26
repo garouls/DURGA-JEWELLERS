@@ -1806,7 +1806,7 @@ body {
 }
 
 /* ==========================================================================
-   Live Gold Rates Ticker Bar
+   Live Gold Rates Ticker Bar (Ultra-Premium Badge Design)
    ========================================================================== */
 .top-ticker-bar {
   position: fixed;
@@ -1822,7 +1822,7 @@ body {
   align-items: center;
   padding: 0 16px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
 .ticker-content-wrapper {
@@ -1836,22 +1836,105 @@ body {
 .ticker-scroll {
   display: flex;
   white-space: nowrap;
-  gap: 40px;
-  animation: marqueeTicker 24s linear infinite;
-  padding-left: 100%;
+  gap: 20px;
+  animation: marqueeTicker 26s linear infinite;
 }
 
 .ticker-scroll:hover {
   animation-play-state: paused;
 }
 
-.ticker-scroll span {
+.ticker-rates-set {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ticker-rate-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 12px;
   font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid transparent;
+}
+
+/* 24K Gold Badge - Majestic Dark Gold */
+.ticker-rate-badge.gold-24k {
+  background: linear-gradient(135deg, #fce082 0%, #b8923a 100%);
+  color: #2a2520;
+  border-color: #ffd700;
+}
+
+.ticker-rate-badge.gold-24k .badge-tag {
+  background: rgba(0, 0, 0, 0.12);
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-right: 6px;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+/* 22K Gold Badge - Ivory Gold */
+.ticker-rate-badge.gold-22k {
+  background: #fdfbf7;
+  color: #5c1626;
+  border-color: #b8923a;
+}
+
+.ticker-rate-badge.gold-22k .badge-tag {
+  background: rgba(184, 146, 58, 0.15);
+  color: #b8923a;
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-right: 6px;
+  font-size: 8px;
+}
+
+/* 18K Gold Badge - Champagne style */
+.ticker-rate-badge.gold-18k {
+  background: rgba(253, 251, 247, 0.1);
+  color: #ffffff;
+  border-color: rgba(184, 146, 58, 0.6);
+}
+
+.ticker-rate-badge.gold-18k .badge-tag {
+  background: rgba(184, 146, 58, 0.3);
+  color: #ffd700;
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-right: 6px;
+  font-size: 8px;
+}
+
+/* Silver Badge - Metallic silver */
+.ticker-rate-badge.metal-silver {
+  background: linear-gradient(135deg, #ffffff 0%, #b3b3b3 100%);
+  color: #1a1a1a;
+  border-color: #e0e0e0;
+}
+
+.ticker-rate-badge.metal-silver .badge-tag {
+  background: rgba(0, 0, 0, 0.12);
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-right: 6px;
+  font-size: 8px;
+}
+
+.ticker-custom-msg {
+  font-family: var(--font-serif);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
-  color: var(--pristine-white);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  color: #fdfbf7;
+  margin: 0 16px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes marqueeTicker {
@@ -1859,7 +1942,7 @@ body {
     transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
