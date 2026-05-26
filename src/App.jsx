@@ -218,48 +218,7 @@ export default function App() {
   const [activeModelSlide, setActiveModelSlide] = useState(0);
   const [likedProducts, setLikedProducts] = useState({});
 
-  // Gold rates and live admin settings state with try-catch safety
-  const [goldRates, setGoldRates] = useState(() => {
-    try {
-      const saved = localStorage.getItem('djjpl_gold_rates');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && parsed.gold24k && parsed.gold22k && parsed.gold18k && parsed.silver) {
-          return parsed;
-        }
-      }
-    } catch (e) {
-      console.error("Failed to parse gold rates from localStorage", e);
-    }
-    return {
-      gold24k: '78,500',
-      gold22k: '71,950',
-      gold18k: '58,880',
-      silver: '92,400',
-      customMessage: 'Welcome to Durga Jewellers Jammu | Mandir Bazar, Bari Brahmana | Call: 9419137701'
-    };
-  });
 
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [adminPassword, setAdminPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginError, setLoginError] = useState('');
-
-  // Form states inside the admin panel
-  const [form24k, setForm24k] = useState(goldRates.gold24k);
-  const [form22k, setForm22k] = useState(goldRates.gold22k);
-  const [form18k, setForm18k] = useState(goldRates.gold18k);
-  const [formSilver, setFormSilver] = useState(goldRates.silver);
-  const [formMsg, setFormMsg] = useState(goldRates.customMessage);
-
-  // Sync forms if goldRates changes externally
-  useEffect(() => {
-    setForm24k(goldRates.gold24k);
-    setForm22k(goldRates.gold22k);
-    setForm18k(goldRates.gold18k);
-    setFormSilver(goldRates.silver);
-    setFormMsg(goldRates.customMessage);
-  }, [goldRates]);
 
   // Auto-advance banner carousel
   useEffect(() => {
@@ -305,61 +264,6 @@ export default function App() {
 
   return (
     <div className="app-container">
-      
-      {/* Top Bar Ticker */}
-      <div className="top-ticker-bar">
-        <div className="ticker-content-wrapper">
-          <div className="ticker-scroll">
-            
-            {/* First Set of Badges */}
-            <div className="ticker-rates-set">
-              <div className="ticker-rate-badge gold-24k">
-                <span className="badge-tag">24K GOLD</span>
-                <span className="badge-val">₹{goldRates.gold24k}</span>
-              </div>
-              <div className="ticker-rate-badge gold-22k">
-                <span className="badge-tag">22K GOLD</span>
-                <span className="badge-val">₹{goldRates.gold22k}</span>
-              </div>
-              <div className="ticker-rate-badge gold-18k">
-                <span className="badge-tag">18K GOLD</span>
-                <span className="badge-val">₹{goldRates.gold18k}</span>
-              </div>
-              <div className="ticker-rate-badge metal-silver">
-                <span className="badge-tag">SILVER 1KG</span>
-                <span className="badge-val">₹{goldRates.silver}</span>
-              </div>
-              <span className="ticker-custom-msg">✨ {goldRates.customMessage} ✨</span>
-            </div>
-
-            {/* Second Set of Badges for Infinite Loop */}
-            <div className="ticker-rates-set">
-              <div className="ticker-rate-badge gold-24k">
-                <span className="badge-tag">24K GOLD</span>
-                <span className="badge-val">₹{goldRates.gold24k}</span>
-              </div>
-              <div className="ticker-rate-badge gold-22k">
-                <span className="badge-tag">22K GOLD</span>
-                <span className="badge-val">₹{goldRates.gold22k}</span>
-              </div>
-              <div className="ticker-rate-badge gold-18k">
-                <span className="badge-tag">18K GOLD</span>
-                <span className="badge-val">₹{goldRates.gold18k}</span>
-              </div>
-              <div className="ticker-rate-badge metal-silver">
-                <span className="badge-tag">SILVER 1KG</span>
-                <span className="badge-val">₹{goldRates.silver}</span>
-              </div>
-              <span className="ticker-custom-msg">✨ {goldRates.customMessage} ✨</span>
-            </div>
-
-          </div>
-        </div>
-        <button className="admin-access-trigger-btn" onClick={() => setIsAdminOpen(true)}>
-          Staff Login
-        </button>
-      </div>
-
       {/* 1. Header & Navigation */}
       <header className="header-main">
         <div className="nav-container">
@@ -994,98 +898,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Admin Panel Modal */}
-      {isAdminOpen && (
-        <div className="admin-modal-overlay">
-          <div className="admin-modal-card">
-            <div className="admin-modal-header">
-              <h3 className="admin-title">Durga Jewellers - Staff Portal</h3>
-              <button 
-                className="close-modal-btn" 
-                onClick={() => { 
-                  setIsAdminOpen(false); 
-                  setIsLoggedIn(false); 
-                  setAdminPassword(''); 
-                  setLoginError(''); 
-                }}
-                aria-label="Close modal"
-              >
-                <X className="icon-md" />
-              </button>
-            </div>
-            
-            {!isLoggedIn ? (
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                if (adminPassword === '9419' || adminPassword === '9419137701') {
-                  setIsLoggedIn(true);
-                  setLoginError('');
-                } else {
-                  setLoginError('Invalid Passcode! Please enter correct credentials.');
-                }
-              }} className="admin-login-form">
-                <div className="form-group">
-                  <label className="input-label">Enter Staff Passcode</label>
-                  <input 
-                    type="password" 
-                    required 
-                    className="form-input" 
-                    value={adminPassword} 
-                    onChange={(e) => setAdminPassword(e.target.value)} 
-                    placeholder="Enter passcode..."
-                    autoFocus
-                  />
-                  {loginError && <p className="error-text">{loginError}</p>}
-                </div>
-                <button type="submit" className="form-submit-btn">LOGIN</button>
-              </form>
-            ) : (
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                const newRates = {
-                  gold24k: form24k,
-                  gold22k: form22k,
-                  gold18k: form18k,
-                  silver: formSilver,
-                  customMessage: formMsg
-                };
-                setGoldRates(newRates);
-                localStorage.setItem('djjpl_gold_rates', JSON.stringify(newRates));
-                setIsAdminOpen(false);
-                setIsLoggedIn(false);
-                setAdminPassword('');
-                alert('Gold rates successfully updated live on Durga Jewellers Jammu!');
-              }} className="admin-dashboard-form">
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="input-label">24K Gold Rate (per 10g)</label>
-                    <input type="text" className="form-input" value={form24k} onChange={(e) => setForm24k(e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label className="input-label">22K Gold Rate (per 10g)</label>
-                    <input type="text" className="form-input" value={form22k} onChange={(e) => setForm22k(e.target.value)} />
-                  </div>
-                </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="input-label">18K Gold Rate (per 10g)</label>
-                    <input type="text" className="form-input" value={form18k} onChange={(e) => setForm18k(e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label className="input-label">Silver Rate (per 1kg)</label>
-                    <input type="text" className="form-input" value={formSilver} onChange={(e) => setFormSilver(e.target.value)} />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label className="input-label">Scrolling Banner Info Message</label>
-                  <textarea className="form-textarea" value={formMsg} onChange={(e) => setFormMsg(e.target.value)} rows={2} />
-                </div>
-                <button type="submit" className="form-submit-btn">PUBLISH LIVE RATES</button>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
+
 
     </div>
   );
