@@ -376,10 +376,6 @@ export default function App() {
                 />
               </div>
 
-              {/* Bottom Trusted info text */}
-              <p className="banner-bottom-text">
-                {banner.sub}
-              </p>
 
             </div>
           </div>
@@ -432,10 +428,6 @@ export default function App() {
       <section id="collage" className="collage-section">
         <div className="section-inner">
           <div className="section-header">
-            <p className="story-card-text">
-              The collection for regal refinement and dignity,<br />
-              fit for royalty jewels to be cherished for generations.
-            </p>
             <div className="title-divider" />
           </div>
 
