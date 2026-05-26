@@ -218,6 +218,39 @@ export default function App() {
   const [activeModelSlide, setActiveModelSlide] = useState(0);
   const [likedProducts, setLikedProducts] = useState({});
 
+  // Gold rates and live admin settings state
+  const [goldRates, setGoldRates] = useState(() => {
+    const saved = localStorage.getItem('djjpl_gold_rates');
+    return saved ? JSON.parse(saved) : {
+      gold24k: '78,500',
+      gold22k: '71,950',
+      gold18k: '58,880',
+      silver: '92,400',
+      customMessage: 'Welcome to Durga Jewellers Jammu | Mandir Bazar, Bari Brahmana | Call: 9419137701'
+    };
+  });
+
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [adminPassword, setAdminPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginError, setLoginError] = useState('');
+
+  // Form states inside the admin panel
+  const [form24k, setForm24k] = useState(goldRates.gold24k);
+  const [form22k, setForm22k] = useState(goldRates.gold22k);
+  const [form18k, setForm18k] = useState(goldRates.gold18k);
+  const [formSilver, setFormSilver] = useState(goldRates.silver);
+  const [formMsg, setFormMsg] = useState(goldRates.customMessage);
+
+  // Sync forms if goldRates changes externally
+  useEffect(() => {
+    setForm24k(goldRates.gold24k);
+    setForm22k(goldRates.gold22k);
+    setForm18k(goldRates.gold18k);
+    setFormSilver(goldRates.silver);
+    setFormMsg(goldRates.customMessage);
+  }, [goldRates]);
+
   // Auto-advance banner carousel
   useEffect(() => {
     const timer = setInterval(() => {
@@ -263,6 +296,19 @@ export default function App() {
   return (
     <div className="app-container">
       
+      {/* Top Bar Ticker */}
+      <div className="top-ticker-bar">
+        <div className="ticker-content-wrapper">
+          <div className="ticker-scroll">
+            <span>✨ Today's Live Rates: 24K Gold (10g): ₹{goldRates.gold24k} | 22K Gold (10g): ₹{goldRates.gold22k} | 18K Gold (10g): ₹{goldRates.gold18k} | Silver (1kg): ₹{goldRates.silver} | {goldRates.customMessage} ✨</span>
+            <span>✨ Today's Live Rates: 24K Gold (10g): ₹{goldRates.gold24k} | 22K Gold (10g): ₹{goldRates.gold22k} | 18K Gold (10g): ₹{goldRates.gold18k} | Silver (1kg): ₹{goldRates.silver} | {goldRates.customMessage} ✨</span>
+          </div>
+        </div>
+        <button className="admin-access-trigger-btn" onClick={() => setIsAdminOpen(true)}>
+          Staff Login
+        </button>
+      </div>
+
       {/* 1. Header & Navigation */}
       <header className="header-main">
         <div className="nav-container">
