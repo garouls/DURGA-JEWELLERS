@@ -324,19 +324,48 @@ export default function App() {
 
       {/* Gold Rate Ticker Bar */}
       <div className="gold-ticker-bar">
-        <div className="ticker-inner">
-          <span className="ticker-label">📅 {rateDate}</span>
-          <span className="ticker-divider">|</span>
-          <span className="ticker-item">🥇 22K Gold — ₹{goldRate22K}/gm</span>
-          <span className="ticker-divider">|</span>
-          <span className="ticker-item">✨ 24K Gold — ₹{goldRate24K}/gm</span>
-          <span className="ticker-divider">|</span>
-          <span className="ticker-item">🥈 Silver — ₹{silverRate}/gm</span>
-          <span className="ticker-divider">|</span>
-          <span className="ticker-note">Rates updated daily • BIS Hallmarked</span>
+        {/* Pinned LIVE label */}
+        <div className="ticker-pinned-label">
+          <span className="ticker-live-dot" />
+          <span className="ticker-live-text">Live Rates</span>
         </div>
+
+        {/* Scrolling marquee strip */}
+        <div className="ticker-scroll-wrapper">
+          <div className="ticker-scroll-track">
+            {/* Render twice for seamless infinite loop */}
+            {[0, 1].map(i => (
+              <span key={i} style={{ display: 'contents' }}>
+                <span className="ticker-rate-pill">
+                  <span className="ticker-rate-icon">🥇</span>
+                  <span className="ticker-rate-label">22K Gold</span>
+                  <span className="ticker-rate-value">₹{goldRate22K}</span>
+                  <span className="ticker-rate-unit">/gm</span>
+                </span>
+                <span className="ticker-rate-pill">
+                  <span className="ticker-rate-icon">✨</span>
+                  <span className="ticker-rate-label">24K Gold</span>
+                  <span className="ticker-rate-value">₹{goldRate24K}</span>
+                  <span className="ticker-rate-unit">/gm</span>
+                </span>
+                <span className="ticker-rate-pill">
+                  <span className="ticker-rate-icon">🥈</span>
+                  <span className="ticker-rate-label">Silver</span>
+                  <span className="ticker-rate-value">₹{silverRate}</span>
+                  <span className="ticker-rate-unit">/gm</span>
+                </span>
+                <span className="ticker-rate-date">
+                  📅 {rateDate} &nbsp;•&nbsp; BIS Hallmarked &nbsp;•&nbsp; Rates updated daily
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Admin gear */}
         <button className="ticker-admin-btn" onClick={() => setShowAdmin(true)} title="Admin Panel">⚙️</button>
       </div>
+
 
       {/* Admin Panel Modal */}
       {showAdmin && (
