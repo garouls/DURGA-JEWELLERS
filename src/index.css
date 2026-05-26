@@ -103,6 +103,25 @@ body {
   transition: var(--transition-smooth);
 }
 
+.brand-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+}
+
+.brand-logo-img:hover {
+  transform: scale(1.03);
+}
+
+.footer-brand-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+  display: block;
+}
+
 .brand-badge {
   width: 44px;
   height: 44px;

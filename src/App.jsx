@@ -267,15 +267,13 @@ export default function App() {
       <header className="header-main">
         <div className="nav-container">
           
-          {/* Logo Brand Title */}
+          {/* Logo Brand Title Image */}
           <a href="#" className="nav-brand">
-            <div className="brand-badge">
-              <span className="brand-badge-text">DJ</span>
-            </div>
-            <div className="brand-text-container">
-              <span className="brand-name">DURGA JEWELLERS</span>
-              <span className="brand-subtitle">Jammu</span>
-            </div>
+            <img 
+              src="/assets/logo.png" 
+              alt="Durga Jewellers Jammu" 
+              className="brand-logo-img"
+            />
           </a>
 
           {/* Desktop Navigation Links */}
@@ -866,7 +864,11 @@ export default function App() {
       <footer className="footer-main">
         <div className="footer-inner">
           <div className="footer-brand">
-            <span className="footer-brand-title">DURGA JEWELLERS</span>
+            <img 
+              src="/assets/logo.png" 
+              alt="Durga Jewellers Jammu" 
+              className="footer-brand-logo-img"
+            />
             <span className="footer-brand-sub">MANDIR BAZAR, WARD NO 2, BARI BRAHMANA</span>
           </div>
 
