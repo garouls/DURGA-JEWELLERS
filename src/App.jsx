@@ -720,8 +720,8 @@ export default function App() {
 
           <div className="models-marquee-container">
             <div className="models-marquee-row">
-              {/* Duplicate the models list twice for a seamless infinite loop */}
-              {[...modelImages, ...modelImages].map((model, index) => (
+              {/* Duplicate the models list four times for a mathematically perfect infinite loop */}
+              {[...modelImages, ...modelImages, ...modelImages, ...modelImages].map((model, index) => (
                 <div key={index} className="model-marquee-card">
                   <img 
                     src={model.url} 

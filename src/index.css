@@ -987,7 +987,7 @@ body {
 
 @keyframes categoryMarqueeLeft {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-25%); }
 }
 
 .categories-marquee-container {
@@ -1021,7 +1021,7 @@ body {
   display: flex;
   gap: 0;
   width: max-content;
-  animation: categoryMarqueeLeft 25s linear infinite;
+  animation: categoryMarqueeLeft 50s linear infinite;
   padding: 16px 10px;
 }
 
@@ -1366,7 +1366,7 @@ body {
 /* 6. Models Section - Infinite Left-to-Right Scrolling Marquee Layout */
 @keyframes marqueeLeft {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-25%); }
 }
 
 .models-marquee-section {
@@ -1407,7 +1407,7 @@ body {
   display: flex;
   gap: 0;
   width: max-content;
-  animation: marqueeLeft 30s linear infinite;
+  animation: marqueeLeft 60s linear infinite;
   padding: 10px 0;
 }
 
