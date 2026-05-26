@@ -943,6 +943,99 @@ export default function App() {
         </div>
       </footer>
 
+      {/* Admin Panel Modal */}
+      {isAdminOpen && (
+        <div className="admin-modal-overlay">
+          <div className="admin-modal-card">
+            <div className="admin-modal-header">
+              <h3 className="admin-title">Durga Jewellers - Staff Portal</h3>
+              <button 
+                className="close-modal-btn" 
+                onClick={() => { 
+                  setIsAdminOpen(false); 
+                  setIsLoggedIn(false); 
+                  setAdminPassword(''); 
+                  setLoginError(''); 
+                }}
+                aria-label="Close modal"
+              >
+                <X className="icon-md" />
+              </button>
+            </div>
+            
+            {!isLoggedIn ? (
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                if (adminPassword === '9419' || adminPassword === '9419137701') {
+                  setIsLoggedIn(true);
+                  setLoginError('');
+                } else {
+                  setLoginError('Invalid Passcode! Please enter correct credentials.');
+                }
+              }} className="admin-login-form">
+                <div className="form-group">
+                  <label className="input-label">Enter Staff Passcode</label>
+                  <input 
+                    type="password" 
+                    required 
+                    className="form-input" 
+                    value={adminPassword} 
+                    onChange={(e) => setAdminPassword(e.target.value)} 
+                    placeholder="Enter passcode..."
+                    autoFocus
+                  />
+                  {loginError && <p className="error-text">{loginError}</p>}
+                </div>
+                <button type="submit" className="form-submit-btn">LOGIN</button>
+              </form>
+            ) : (
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                const newRates = {
+                  gold24k: form24k,
+                  gold22k: form22k,
+                  gold18k: form18k,
+                  silver: formSilver,
+                  customMessage: formMsg
+                };
+                setGoldRates(newRates);
+                localStorage.setItem('djjpl_gold_rates', JSON.stringify(newRates));
+                setIsAdminOpen(false);
+                setIsLoggedIn(false);
+                setAdminPassword('');
+                alert('Gold rates successfully updated live on Durga Jewellers Jammu!');
+              }} className="admin-dashboard-form">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="input-label">24K Gold Rate (per 10g)</label>
+                    <input type="text" className="form-input" value={form24k} onChange={(e) => setForm24k(e.target.value)} />
+                  </div>
+                  <div className="form-group">
+                    <label className="input-label">22K Gold Rate (per 10g)</label>
+                    <input type="text" className="form-input" value={form22k} onChange={(e) => setForm22k(e.target.value)} />
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="input-label">18K Gold Rate (per 10g)</label>
+                    <input type="text" className="form-input" value={form18k} onChange={(e) => setForm18k(e.target.value)} />
+                  </div>
+                  <div className="form-group">
+                    <label className="input-label">Silver Rate (per 1kg)</label>
+                    <input type="text" className="form-input" value={formSilver} onChange={(e) => setFormSilver(e.target.value)} />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label className="input-label">Scrolling Banner Info Message</label>
+                  <textarea className="form-textarea" value={formMsg} onChange={(e) => setFormMsg(e.target.value)} rows={2} />
+                </div>
+                <button type="submit" className="form-submit-btn">PUBLISH LIVE RATES</button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

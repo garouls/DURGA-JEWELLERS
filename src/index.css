@@ -76,7 +76,7 @@ body {
 /* 1. Header & Navigation */
 .header-main {
   position: fixed;
-  top: 0;
+  top: 38px;
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -1803,4 +1803,177 @@ body {
   color: var(--text-muted);
   font-size: 9px;
   font-weight: 500;
+}
+
+/* ==========================================================================
+   Live Gold Rates Ticker Bar
+   ========================================================================== */
+.top-ticker-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  background: linear-gradient(90deg, var(--burgundy-dark) 0%, var(--burgundy) 50%, var(--burgundy-dark) 100%);
+  border-bottom: 1.5px solid var(--royal-gold);
+  z-index: 1100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.ticker-content-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-scroll {
+  display: flex;
+  white-space: nowrap;
+  gap: 40px;
+  animation: marqueeTicker 24s linear infinite;
+  padding-left: 100%;
+}
+
+.ticker-scroll:hover {
+  animation-play-state: paused;
+}
+
+.ticker-scroll span {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--pristine-white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes marqueeTicker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.admin-access-trigger-btn {
+  background: rgba(184, 146, 58, 0.12);
+  border: 1px solid rgba(184, 146, 58, 0.4);
+  color: var(--royal-gold);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.admin-access-trigger-btn:hover {
+  background: var(--royal-gold);
+  color: var(--pristine-white);
+  border-color: var(--royal-gold);
+}
+
+/* Add offset for body to push hero down because of header & ticker height */
+.app-container {
+  padding-top: 38px;
+}
+
+/* ==========================================================================
+   Admin Modal Styles (Glassmorphism & Luxury Theme)
+   ========================================================================== */
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(42, 37, 32, 0.5);
+  backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.admin-modal-card {
+  width: 100%;
+  max-width: 520px;
+  background: #fdfbf7;
+  border: 2px solid var(--royal-gold);
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.admin-modal-header {
+  background: var(--burgundy);
+  border-bottom: 1.5px solid var(--royal-gold);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-title {
+  font-family: var(--font-serif);
+  color: var(--pristine-white);
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.close-modal-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.close-modal-btn:hover {
+  color: var(--pristine-white);
+  transform: rotate(90deg);
+}
+
+.admin-login-form, .admin-dashboard-form {
+  padding: 28px 24px;
+}
+
+.error-text {
+  color: #ff3b30;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.admin-dashboard-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.admin-dashboard-form .form-group {
+  margin-bottom: 16px;
+}
+
+.admin-dashboard-form .form-group:last-child {
+  margin-bottom: 24px;
 }
