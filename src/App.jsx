@@ -211,12 +211,69 @@ const categories = [
 ];
 
 
+const ADMIN_PASSWORD = 'durga@1988';
+
 export default function App() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeModelSlide, setActiveModelSlide] = useState(0);
   const [likedProducts, setLikedProducts] = useState({});
+
+  // Gold Rate State
+  const [goldRate22K, setGoldRate22K] = useState(() => {
+    try { return localStorage.getItem('dj_gold_22k') || '7,250'; } catch { return '7,250'; }
+  });
+  const [goldRate24K, setGoldRate24K] = useState(() => {
+    try { return localStorage.getItem('dj_gold_24k') || '7,900'; } catch { return '7,900'; }
+  });
+  const [silverRate, setSilverRate] = useState(() => {
+    try { return localStorage.getItem('dj_silver') || '92'; } catch { return '92'; }
+  });
+  const [rateDate, setRateDate] = useState(() => {
+    try { return localStorage.getItem('dj_rate_date') || new Date().toLocaleDateString('en-IN'); } catch { return new Date().toLocaleDateString('en-IN'); }
+  });
+
+  // Admin Panel State
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [adminUnlocked, setAdminUnlocked] = useState(false);
+  const [adminPassword, setAdminPassword] = useState('');
+  const [adminError, setAdminError] = useState('');
+  const [tempRates, setTempRates] = useState({ gold22k: '', gold24k: '', silver: '' });
+
+  const handleAdminUnlock = () => {
+    if (adminPassword === ADMIN_PASSWORD) {
+      setAdminUnlocked(true);
+      setAdminError('');
+      setTempRates({ gold22k: goldRate22K, gold24k: goldRate24K, silver: silverRate });
+    } else {
+      setAdminError('Incorrect password. Please try again.');
+    }
+  };
+
+  const handleRateSave = () => {
+    setGoldRate22K(tempRates.gold22k);
+    setGoldRate24K(tempRates.gold24k);
+    setSilverRate(tempRates.silver);
+    const today = new Date().toLocaleDateString('en-IN');
+    setRateDate(today);
+    try {
+      localStorage.setItem('dj_gold_22k', tempRates.gold22k);
+      localStorage.setItem('dj_gold_24k', tempRates.gold24k);
+      localStorage.setItem('dj_silver', tempRates.silver);
+      localStorage.setItem('dj_rate_date', today);
+    } catch {}
+    setShowAdmin(false);
+    setAdminUnlocked(false);
+    setAdminPassword('');
+  };
+
+  const handleAdminClose = () => {
+    setShowAdmin(false);
+    setAdminUnlocked(false);
+    setAdminPassword('');
+    setAdminError('');
+  };
 
 
 
@@ -264,6 +321,86 @@ export default function App() {
 
   return (
     <div className="app-container">
+
+      {/* Gold Rate Ticker Bar */}
+      <div className="gold-ticker-bar">
+        <div className="ticker-inner">
+          <span className="ticker-label">📅 {rateDate}</span>
+          <span className="ticker-divider">|</span>
+          <span className="ticker-item">🥇 22K Gold — ₹{goldRate22K}/gm</span>
+          <span className="ticker-divider">|</span>
+          <span className="ticker-item">✨ 24K Gold — ₹{goldRate24K}/gm</span>
+          <span className="ticker-divider">|</span>
+          <span className="ticker-item">🥈 Silver — ₹{silverRate}/gm</span>
+          <span className="ticker-divider">|</span>
+          <span className="ticker-note">Rates updated daily • BIS Hallmarked</span>
+        </div>
+        <button className="ticker-admin-btn" onClick={() => setShowAdmin(true)} title="Admin Panel">⚙️</button>
+      </div>
+
+      {/* Admin Panel Modal */}
+      {showAdmin && (
+        <div className="admin-overlay" onClick={handleAdminClose}>
+          <div className="admin-modal" onClick={e => e.stopPropagation()}>
+            <button className="admin-close-btn" onClick={handleAdminClose}>✕</button>
+            <div className="admin-header">
+              <span className="admin-icon">👑</span>
+              <h2 className="admin-title">Admin Panel</h2>
+              <p className="admin-subtitle">Durga Jewellers — Rate Manager</p>
+            </div>
+            {!adminUnlocked ? (
+              <div className="admin-login">
+                <label className="admin-label">Enter Admin Password</label>
+                <input
+                  type="password"
+                  className="admin-input"
+                  placeholder="Password"
+                  value={adminPassword}
+                  onChange={e => setAdminPassword(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && handleAdminUnlock()}
+                />
+                {adminError && <p className="admin-error">{adminError}</p>}
+                <button className="admin-submit-btn" onClick={handleAdminUnlock}>Unlock</button>
+              </div>
+            ) : (
+              <div className="admin-form">
+                <div className="admin-field">
+                  <label className="admin-label">22K Gold Rate (₹/gm)</label>
+                  <input
+                    type="text"
+                    className="admin-input"
+                    value={tempRates.gold22k}
+                    onChange={e => setTempRates(p => ({ ...p, gold22k: e.target.value }))}
+                    placeholder="e.g. 7,250"
+                  />
+                </div>
+                <div className="admin-field">
+                  <label className="admin-label">24K Gold Rate (₹/gm)</label>
+                  <input
+                    type="text"
+                    className="admin-input"
+                    value={tempRates.gold24k}
+                    onChange={e => setTempRates(p => ({ ...p, gold24k: e.target.value }))}
+                    placeholder="e.g. 7,900"
+                  />
+                </div>
+                <div className="admin-field">
+                  <label className="admin-label">Silver Rate (₹/gm)</label>
+                  <input
+                    type="text"
+                    className="admin-input"
+                    value={tempRates.silver}
+                    onChange={e => setTempRates(p => ({ ...p, silver: e.target.value }))}
+                    placeholder="e.g. 92"
+                  />
+                </div>
+                <button className="admin-save-btn" onClick={handleRateSave}>💾 Save Rates</button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* 1. Header & Navigation */}
       <header className="header-main">
         <div className="nav-container">
