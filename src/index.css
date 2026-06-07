@@ -1309,6 +1309,7 @@ body {
   gap: 0;
   width: max-content;
   animation: categoryMarqueeLeft 50s linear infinite;
+  animation-delay: 5s;
   padding: 16px 10px;
 }
 
@@ -1695,6 +1696,7 @@ body {
   gap: 0;
   width: max-content;
   animation: marqueeLeft 60s linear infinite;
+  animation-delay: 5s;
   padding: 10px 0;
 }
 
