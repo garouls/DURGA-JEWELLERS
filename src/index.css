@@ -78,8 +78,8 @@ body {
    ══════════════════════════════════════════ */
 
 @keyframes tickerScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(50%); }
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 @keyframes shimmerGold {
@@ -180,8 +180,6 @@ body {
   white-space: nowrap;
   animation: tickerScroll 28s linear infinite;
   gap: 0;
-  /* Start from left: offset by -50% so copy 1 begins off-screen left */
-  transform: translateX(-50%);
 }
 
 .ticker-rate-pill {
