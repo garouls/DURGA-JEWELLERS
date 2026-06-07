@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { supabase } from './supabaseClient';
 import { 
   Menu, X, Phone, MapPin, Clock, ArrowRight, ArrowLeft, 
   Sparkles, ShieldCheck, Heart, Compass, Award 
@@ -221,18 +222,30 @@ export default function App() {
   const [likedProducts, setLikedProducts] = useState({});
 
   // Gold Rate State
-  const [goldRate22K, setGoldRate22K] = useState(() => {
-    try { return localStorage.getItem('dj_gold_22k') || '7,250'; } catch { return '7,250'; }
-  });
-  const [goldRate24K, setGoldRate24K] = useState(() => {
-    try { return localStorage.getItem('dj_gold_24k') || '7,900'; } catch { return '7,900'; }
-  });
-  const [silverRate, setSilverRate] = useState(() => {
-    try { return localStorage.getItem('dj_silver') || '92'; } catch { return '92'; }
-  });
-  const [rateDate, setRateDate] = useState(() => {
-    try { return localStorage.getItem('dj_rate_date') || new Date().toLocaleDateString('en-IN'); } catch { return new Date().toLocaleDateString('en-IN'); }
-  });
+  const [goldRate22K, setGoldRate22K] = useState('7,250');
+  const [goldRate24K, setGoldRate24K] = useState('7,900');
+  const [silverRate, setSilverRate] = useState('92');
+  const [rateDate, setRateDate] = useState(new Date().toLocaleDateString('en-IN'));
+
+  // Fetch rates from Supabase on load
+  useEffect(() => {
+    const fetchRates = async () => {
+      const { data, error } = await supabase
+        .from('gold_rates')
+        .select('*')
+        .eq('id', 1)
+        .single();
+        
+      if (data && !error) {
+        setGoldRate22K(data.gold_22k);
+        setGoldRate24K(data.gold_24k);
+        setSilverRate(data.silver);
+        const updatedDate = new Date(data.updated_at).toLocaleDateString('en-IN');
+        setRateDate(updatedDate);
+      }
+    };
+    fetchRates();
+  }, []);
 
   // Admin Panel State
   const [showAdmin, setShowAdmin] = useState(false);
@@ -251,18 +264,26 @@ export default function App() {
     }
   };
 
-  const handleRateSave = () => {
+  const handleRateSave = async () => {
+    const today = new Date();
+    
+    // Optimistic UI update
     setGoldRate22K(tempRates.gold22k);
     setGoldRate24K(tempRates.gold24k);
     setSilverRate(tempRates.silver);
-    const today = new Date().toLocaleDateString('en-IN');
-    setRateDate(today);
-    try {
-      localStorage.setItem('dj_gold_22k', tempRates.gold22k);
-      localStorage.setItem('dj_gold_24k', tempRates.gold24k);
-      localStorage.setItem('dj_silver', tempRates.silver);
-      localStorage.setItem('dj_rate_date', today);
-    } catch {}
+    setRateDate(today.toLocaleDateString('en-IN'));
+    
+    // Save to Supabase
+    await supabase
+      .from('gold_rates')
+      .update({
+        gold_22k: tempRates.gold22k,
+        gold_24k: tempRates.gold24k,
+        silver: tempRates.silver,
+        updated_at: today.toISOString()
+      })
+      .eq('id', 1);
+
     setShowAdmin(false);
     setAdminUnlocked(false);
     setAdminPassword('');
