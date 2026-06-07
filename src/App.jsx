@@ -347,7 +347,7 @@ export default function App() {
       <div className="gold-ticker-bar">
         {/* Pinned LIVE label */}
         <div className="ticker-pinned-label">
-          <span className="ticker-live-dot" />
+          <span className="ticker-live-icon">✦</span>
           <span className="ticker-live-text">Live Rates</span>
         </div>
 
@@ -475,7 +475,7 @@ export default function App() {
           </nav>
 
           {/* Call button */}
-          <a href="tel:+911912540000" className="call-btn">
+          <a href="tel:+919419137701" className="call-btn">
             <Phone className="icon-sm" />
             <span>CALL NOW</span>
           </a>
@@ -499,7 +499,7 @@ export default function App() {
             <a href="#showcase" onClick={() => setIsMenuOpen(false)} className="mobile-nav-link">COLLECTIONS</a>
             <a href="#models" onClick={() => setIsMenuOpen(false)} className="mobile-nav-link">OUR MODELS</a>
             <a href="#contact" onClick={() => setIsMenuOpen(false)} className="mobile-nav-link">CONTACT</a>
-            <a href="tel:+911912540000" className="mobile-call-btn">
+            <a href="tel:+919419137701" className="mobile-call-btn">
               <Phone className="icon-sm" />
               <span>CALL NOW</span>
             </a>
