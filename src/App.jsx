@@ -611,6 +611,33 @@ export default function App() {
         </div>
       </section>
 
+      {/* Live Rate Section */}
+      <section className="live-rate-section">
+        <div className="rate-container">
+          <div className="rate-header">
+            <h2 className="rate-title">Today's Gold & Silver Rates</h2>
+            <p className="rate-subtitle">Live updates from Durga Jewellers &nbsp;•&nbsp; {rateDate}</p>
+          </div>
+          <div className="rate-cards-wrapper">
+            <div className="rate-card">
+              <span className="rate-card-icon">🥇</span>
+              <h3 className="rate-card-name">22K Gold</h3>
+              <p className="rate-card-price">₹{goldRate22K} <span className="rate-card-unit">/ gm</span></p>
+            </div>
+            <div className="rate-card">
+              <span className="rate-card-icon">✨</span>
+              <h3 className="rate-card-name">24K Gold</h3>
+              <p className="rate-card-price">₹{goldRate24K} <span className="rate-card-unit">/ gm</span></p>
+            </div>
+            <div className="rate-card">
+              <span className="rate-card-icon">🥈</span>
+              <h3 className="rate-card-name">Silver</h3>
+              <p className="rate-card-price">₹{silverRate} <span className="rate-card-unit">/ gm</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 3. Vintage Collage Showcase Section */}
       <section id="collage" className="collage-section">
         <div className="section-inner">
