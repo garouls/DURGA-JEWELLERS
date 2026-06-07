@@ -354,8 +354,8 @@ export default function App() {
         {/* Scrolling marquee strip */}
         <div className="ticker-scroll-wrapper">
           <div className="ticker-scroll-track">
-            {/* Render twice for seamless infinite loop */}
-            {[0, 1].map(i => (
+            {/* Render 4 times for mathematically perfect seamless infinite loop */}
+            {[0, 1, 2, 3].map(i => (
               <span key={i} style={{ display: 'contents' }}>
                 <span className="ticker-rate-pill">
                   <span className="ticker-rate-icon">🥇</span>
